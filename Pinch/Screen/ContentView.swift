@@ -32,6 +32,7 @@ struct ContentView: View
         {
             ZStack
             {
+                Color.clear
                 //MARK: - PAGE IMAGE
                 
                 Image("magazine-front-cover")
@@ -46,12 +47,13 @@ struct ContentView: View
                     .offset(x:imageOffset.width,y:imageOffset.height)
                 
                 //MARK: - 1. TAP GESTURE
-                    .onTapGesture(count:2,perform: {
+                    .onTapGesture(count:2,perform:
+                                    {
                         if imageScale == 1
                         {
                             withAnimation(.spring())
                             {
-                                imageScale =  5 
+                                imageScale =  5
                             }
                         }
                         else
@@ -76,16 +78,24 @@ struct ContentView: View
                         {_ in
                             if imageScale <= 1
                             {
-                                resetImageState()                            }
+                                resetImageState()
+                            }
                             
                         }
-                    )
+                    )//:GESTURE
             }//:ZStack
             .navigationTitle("Pinch & Zoom")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: {
                 isAnimating = true
             })
+            //MARK: - INFO PANEL
+            .overlay(
+                InfoPanelView(scale: imageScale, offset: imageOffset)
+                    .padding(.horizontal)
+                    .padding(.top,30)
+                ,alignment: .top
+            )
         }//:NAVIGATION
         .navigationViewStyle(.stack)
     }
