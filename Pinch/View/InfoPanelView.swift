@@ -48,6 +48,7 @@ struct InfoPanelView: View {
             .cornerRadius(8)
             .frame(maxWidth:420)
             .opacity(isInfoPanelVisible ? 1:0)
+            
             Spacer()
         }
     }
