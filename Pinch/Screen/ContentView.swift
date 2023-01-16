@@ -46,7 +46,7 @@ struct ContentView: View
                     .scaleEffect(imageScale)
                     .offset(x:imageOffset.width,y:imageOffset.height)
                 
-                //MARK: - 1. TAP GESTURE
+                //MARK: 1. TAP GESTURE
                     .onTapGesture(count:2,perform:
                                     {
                         if imageScale == 1
@@ -62,7 +62,7 @@ struct ContentView: View
                             
                         }
                     })
-                //MARK: - 2. DRAG GESTURE
+                //MARK: 2. DRAG GESTURE
                     .gesture(
                         DragGesture()
                             .onChanged
@@ -84,7 +84,7 @@ struct ContentView: View
                         }
                     )//:GESTURE
                 
-                //MARK: - 3. MAGNIFICATION
+                //MARK: 3. MAGNIFICATION
                     .gesture(
                         MagnificationGesture()
                             .onChanged{value in
