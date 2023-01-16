@@ -10,11 +10,11 @@ import SwiftUI
 struct ContentView: View
 {
     
-    //MARK: - PROPERTY
+    // MARK: - PROPERTY
     @State private var isAnimating : Bool = false
     @State private var imageScale: CGFloat = 1
     @State private var imageOffset: CGSize = .zero
-    //MARK: - FUNCTION
+    // MARK: - FUNCTION
     func resetImageState()
     {
         return withAnimation(.spring())
@@ -23,17 +23,17 @@ struct ContentView: View
             imageOffset = .zero
         }
     }
-    //MARK: - CONTENT
+    // MARK: - CONTENT
     
     var body: some View
     {
-        //MARK: - PAGE IMAGE
+        // MARK: - PAGE IMAGE
         NavigationView
         {
             ZStack
             {
                 Color.clear
-                //MARK: - PAGE IMAGE
+                // MARK: - PAGE IMAGE
                 
                 Image("magazine-front-cover")
                     .resizable()
@@ -46,7 +46,7 @@ struct ContentView: View
                     .scaleEffect(imageScale)
                     .offset(x:imageOffset.width,y:imageOffset.height)
                 
-                //MARK: 1. TAP GESTURE
+                // MARK: 1. TAP GESTURE
                     .onTapGesture(count:2,perform:
                                     {
                         if imageScale == 1
@@ -62,7 +62,7 @@ struct ContentView: View
                             
                         }
                     })
-                //MARK: 2. DRAG GESTURE
+                // MARK: 2. DRAG GESTURE
                     .gesture(
                         DragGesture()
                             .onChanged
@@ -84,7 +84,7 @@ struct ContentView: View
                         }
                     )//:GESTURE
                 
-                //MARK: 3. MAGNIFICATION
+                // MARK: 3. MAGNIFICATION
                     .gesture(
                         MagnificationGesture()
                             .onChanged{value in
@@ -119,14 +119,14 @@ struct ContentView: View
             .onAppear(perform: {
                 isAnimating = true
             })
-            //MARK: - INFO PANEL
+            // MARK: - INFO PANEL
             .overlay(
                 InfoPanelView(scale: imageScale, offset: imageOffset)
                     .padding(.horizontal)
                     .padding(.top,30)
                 ,alignment: .top
             )
-            //MARK: - CONTROLS
+            // MARK: - CONTROLS
             .overlay(
                 Group
                 {
@@ -197,7 +197,7 @@ struct ContentView: View
         .navigationViewStyle(.stack)
     }
 }
-//MARK: - PREVIEW
+// MARK: - PREVIEW
 struct ContentView_Previews: PreviewProvider
 {
     static var previews: some View

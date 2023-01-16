@@ -14,7 +14,7 @@ struct InfoPanelView: View {
     var body: some View {
         HStack
         {
-            //MARK: HOTSPOT
+            // MARK: HOTSPOT
             Image(systemName: "circle.circle")
                 .symbolRenderingMode(.hierarchical)
                 .resizable()
@@ -26,7 +26,7 @@ struct InfoPanelView: View {
                     }
                 }
             Spacer()
-            //MARK: INFO PANEL
+            // MARK: INFO PANEL
             
             HStack(spacing:2)
             {
